@@ -21,6 +21,26 @@ public class Video {
 	private String videotitle;
 	
 	private String videoduration;
+	
+	private String professorName;
+	
+	
+
+	public String getVideotitle() {
+		return videotitle;
+	}
+
+	public void setVideotitle(String videotitle) {
+		this.videotitle = videotitle;
+	}
+
+	public String getProfessorName() {
+		return professorName;
+	}
+
+	public void setProfessorName(String professorName) {
+		this.professorName = professorName;
+	}
 
 	@CreationTimestamp
 	private LocalDateTime createddt;
@@ -83,4 +103,7 @@ public class Video {
 	public void setUpdateddt(LocalDateTime updateddt) {
 		this.updateddt = updateddt;
 	}
+	
+	
+	
 }

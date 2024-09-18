@@ -12,4 +12,8 @@ public interface CourseService {
     public CourseDetailsBean getCourseDetailsByCategory(Long catid);
 
     public CourseBean getCourseDetailsById(Long courseid);
+    
+    public CourseDetailsBean getMyCourses();
+    
+ 
 }

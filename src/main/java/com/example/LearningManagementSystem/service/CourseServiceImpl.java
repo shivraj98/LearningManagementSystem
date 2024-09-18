@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -138,6 +139,33 @@ public class CourseServiceImpl implements CourseService {
             throw new EntityDataNotFound("User doesn't exist");
         }
     }
+
+	@Override
+	public CourseDetailsBean getMyCourses() {
+		CourseDetailsBean courseDetailsBean = null;
+		try {
+			Optional<UserProfile> userProfile = userProfileRepository.findById(null);
+			List<CourseBean> coursDetails = new ArrayList<>();
+			if (userProfile.isPresent()) {
+				List<Course> courses = courseRepository.findByUserprofilekey(userProfile.get().getId());
+				coursDetails = courses.stream().map(course -> {
+					CourseBean courseBean = new CourseBean();
+					courseBean.setCourseName(course.getCoursename());
+//				 courseBean.setProfessorName(course.get) --professor name
+					courseBean.setCoursedescription(course.getCoursedescription());
+					return courseBean;
+				}).collect(Collectors.toList());
+
+			} else {
+				throw new EntityDataNotFound("user not found");
+			}
+			courseDetailsBean = new CourseDetailsBean();
+			courseDetailsBean.setCourseDetailList(coursDetails);
+		} catch (Exception ex) {
+			ex.getMessage();
+		}
+		return courseDetailsBean;
+	}
 }
 
 

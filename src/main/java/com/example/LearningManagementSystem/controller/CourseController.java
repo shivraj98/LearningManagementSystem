@@ -29,4 +29,9 @@ public class CourseController {
     public ResponseEntity<Object> getCourseDetailsById(@PathVariable Long courseid){
         return ResponseHandler.responseEntity("Courses Detail for given Category",courseService.getCourseDetailsById(courseid), HttpStatus.OK);
     }
+    
+    @GetMapping("/v1/user/mycourses")
+    public ResponseEntity<Object> getMyCourses(){
+        return ResponseHandler.responseEntity("Courses Detail for given Category",courseService.getMyCourses(), HttpStatus.OK);
+    }
 }

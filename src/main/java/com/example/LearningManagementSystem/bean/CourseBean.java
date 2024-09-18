@@ -9,8 +9,10 @@ public class CourseBean {
     private String professorName;
 
     private String experience;
+    
+    private String coursedescription;
 
-    public Long getCourseId() {
+	public Long getCourseId() {
         return courseId;
     }
 
@@ -41,4 +43,12 @@ public class CourseBean {
     public void setExperience(String experience) {
         this.experience = experience;
     }
+    
+    public String getCoursedescription() {
+  		return coursedescription;
+  	}
+
+  	public void setCoursedescription(String coursedescription) {
+  		this.coursedescription = coursedescription;
+  	}
 }
